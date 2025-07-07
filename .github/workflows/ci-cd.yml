@@ -55,9 +55,9 @@ jobs:
         run: npm ci
 
       - name: Run ESLint
-        run: npm run lint
+        run: npm run lint:check
 
-      - name: Run Prettier check
+      - name: Check code formatting
         run: npm run format:check
         continue-on-error: true
 
