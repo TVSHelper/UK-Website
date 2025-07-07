@@ -1,0 +1,37 @@
+<nav class="navbar">
+  <div class="logo">
+    <img priority ngSrc="/assets/icons/home/navbar/tvs-icon.svg" alt="TVS icon" height="36" width="103">
+  </div>
+
+  <ul class="nav-links" [class.active]="isMenuOpen">
+    <li class="nav-item" routerLink="/home">Home</li>
+
+    <li class="nav-item">
+      <button (click)="scrollTo('services')">Services</button>
+    </li>
+    <li class="nav-item">
+      <button (click)="scrollTo('hot-deals')">Hot Deals</button>
+    </li>
+
+    <li class="nav-item" routerLink="/transportation">Transportation</li>
+
+    <li class="nav-item">
+      <button (click)="scrollTo('about-us')">About Us</button>
+    </li>
+    <li class="nav-item">
+      <button (click)="scrollTo('register-form')">Contact</button>
+    </li>
+  </ul>
+  <div class="icons">
+    <i>
+      <img ngSrc="/assets/icons/home/navbar/search.svg" alt="Search icon" height="40" width="40">
+    </i>
+    <i>
+      <img ngSrc="/assets/icons/home/navbar/user.svg" alt="User icon" height="40" width="40">
+    </i>
+  </div>
+
+  <button class="mobile-menu-toggle" (click)="toggleMenu()">
+    <div class="hamburger-icon"></div>
+  </button>
+</nav>

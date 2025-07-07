@@ -1,0 +1,61 @@
+.hot-deals-section {
+  width: 90vw;
+  max-width: 2500px;
+  padding-bottom: 70px;
+  margin: 20px auto 0;
+  transition: margin-top 0.4s ease-in-out; // Optional: adds a smooth transition
+
+
+  .deals-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 20px; // Increased bottom margin
+
+    .section-label {
+      font-family: 'Inter', serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #002C67;
+      margin-bottom: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 43px;
+        height: 2px;
+        background-color: #EC6329;
+        margin: 6px 5px 9px 0;
+      }
+    }
+
+    .main-title {
+      font-family: 'Inter', serif;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #002C67;
+      margin: 0;
+    }
+  }
+}
+
+:host-context(.car-list-visible) .hot-deals-section {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .hot-deals-section {
+    width: 95vw;
+    padding-bottom: 40px;
+
+    .deals-title {
+      .main-title {
+        font-size: 36px;
+      }
+    }
+  }
+}

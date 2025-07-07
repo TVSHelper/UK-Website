@@ -1,0 +1,350 @@
+// ===============================================
+// VARIABLES
+// ===============================================
+$primary-orange: #ff6f42;
+$orange-hover: #e05e32;
+$light-gray-bg: #f7f7f7;
+$text-color-dark: #333;
+$text-color-light: #808080;
+$border-radius-main: 8px;
+$border-radius-inner: 6px;
+
+// Breakpoints
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 768px;
+
+
+// ===============================================
+// HOST & COMPONENT WRAPPER
+// ===============================================
+:host {
+  display: block;
+  position: relative;
+  width: 90%;
+  max-width: 1400px;
+  margin: -350px auto 230px auto;
+  z-index: 10;
+}
+
+:host.is-expanded {
+  margin-bottom: 173px;
+}
+
+.search-component {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: $border-radius-main;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 1400px;
+  box-sizing: border-box;
+  position: relative;
+  transition: padding-bottom 0.4s ease-in-out;
+}
+
+
+// ===============================================
+// MAIN & SECONDARY ROWS
+// ===============================================
+.main-search-row,
+.secondary-options-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+// ===============================================
+// INPUT BOX STYLES (Location, Date, Time)
+// ===============================================
+.search-input-box {
+  display: flex;
+  align-items: center;
+  background-color: $light-gray-bg;
+  border-radius: $border-radius-main;
+  padding: 8px 12px;
+  min-height: 55px;
+  box-sizing: border-box;
+  cursor: pointer;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 180px;
+
+  .icon-section {
+    margin-right: 8px;
+    img {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+  }
+
+  .text-input-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .input-label {
+      font-family: 'Inter', serif;
+      font-size: 10px;
+      color: $text-color-light;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: bold;
+
+      .required-asterisk {
+        color: $primary-orange;
+        margin-left: 1px;
+      }
+    }
+
+    .main-text-input {
+      font-family: 'Inter', serif;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 16px;
+      color: $text-color-dark;
+      padding: 0;
+      width: 100%;
+
+      &.date-input::-webkit-calendar-picker-indicator,
+      &.time-input::-webkit-calendar-picker-indicator {
+        display: none;
+      }
+    }
+  }
+}
+
+.date-time-box {
+  flex-basis: 140px;
+}
+
+
+// ===============================================
+// OTHER ELEMENTS (Swap, Button, Options)
+// ===============================================
+.swap-icon-wrapper {
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: #d0d0d0;
+    transform: rotate(180deg);
+  }
+
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.find-ride-btn {
+  background-color: $primary-orange;
+  color: white;
+  border: none;
+  border-radius: $border-radius-main;
+  padding: 15px 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+  height: 55px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  flex-basis: 180px;
+
+  &:hover {
+    background-color: $orange-hover;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+  }
+}
+
+.radio-button-group {
+  display: flex;
+  background-color: $light-gray-bg;
+  border-radius: $border-radius-main;
+  padding: 5px;
+
+  .radio-segment {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+
+    span {
+      display: block;
+      border-radius: $border-radius-inner;
+      padding: 8px 15px;
+      font-size: 14px;
+      color: $text-color-dark;
+      transition: all 0.3s ease;
+    }
+
+    input[type="radio"]:checked + span {
+      background-color: $primary-orange;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.custom-dropdown-container {
+  display: flex;
+  align-items: center;
+  background-color: $light-gray-bg;
+  border-radius: $border-radius-main;
+  padding: 8px 12px;
+  height: 40px;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+  flex-grow: 1;
+  flex-basis: 120px;
+
+  .dropdown-icon img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+  }
+
+  .custom-select {
+    appearance: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 15px;
+    color: $text-color-dark;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .dropdown-arrow {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: #888;
+    }
+  }
+}
+
+.less-options-link {
+  font-family: 'Inter', serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+  font-size: 15px;
+  color: $text-color-dark;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  user-select: none;
+  padding: 5px 10px;
+  border-radius: $border-radius-inner;
+  margin-left: auto;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    fill: $text-color-dark;
+    transition: fill 0.2s ease;
+  }
+
+  &:hover {
+    color: $primary-orange;
+    svg {
+      fill: $primary-orange;
+    }
+  }
+}
+
+
+// ===============================================
+// RESPONSIVE MEDIA QUERIES
+// ===============================================
+
+// --- Tablet View ---
+@media (max-width: $breakpoint-tablet) {
+  .search-component {
+    padding: 15px;
+  }
+
+  .main-search-row {
+    .search-input-box {
+      flex-basis: calc(50% - 20px);
+    }
+  }
+
+  .secondary-options-row {
+    justify-content: center;
+  }
+
+  .find-ride-btn {
+    flex-basis: 100%;
+  }
+}
+
+// --- Mobile View ---
+@media (max-width: $breakpoint-mobile) {
+  .main-search-row,
+  .secondary-options-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .main-search-row .search-input-box {
+    flex-basis: 100%;
+  }
+
+  .swap-icon-wrapper {
+    display: none;
+  }
+
+  .less-options-link {
+    justify-content: center;
+    margin: 10px auto 0;
+  }
+
+  .radio-button-group {
+    width: 100%;
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    margin: -80px auto 40px auto;
+  }
+}

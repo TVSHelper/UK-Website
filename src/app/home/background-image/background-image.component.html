@@ -1,0 +1,36 @@
+@if (staticImage()) {
+  <div class="hero-image-container" [style.background-image]="'url(' + staticImage() + ')'"></div>
+} @else {
+  <div class="hero-slider-container">
+    <div class="slides-wrapper">
+      @for (slide of slides; track slide.url; let i = $index) {
+        <div
+          class="slide"
+          [class.active]="i === currentIndex()"
+          [style.background-image]="'url(' + slide.url + ')'"
+        >
+          <div class="slide-content">
+            @if (i === currentIndex()) {
+              <h2 class="slide-title">{{ currentSlide().title }}</h2>
+              <button class="slide-button">
+                {{ currentSlide().buttonText }}
+                <span class="arrow">&rarr;</span>
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="slider-indicators">
+      @for (slide of slides; track slide.url; let i = $index) {
+        <button
+          type="button"
+          class="indicator"
+          [class.active]="i === currentIndex()"
+          (click)="goToSlide(i)"
+        ></button>
+      }
+    </div>
+  </div>
+}

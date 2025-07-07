@@ -1,0 +1,128 @@
+.car-container {
+  display: flex;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.car-image {
+  flex-shrink: 0;
+  flex-basis: 320px;
+  background-color: #eee;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.car-info {
+  flex-grow: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h3 {
+    font-family: Inter, serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2;
+    color: #002C67;
+    margin: 0 0 16px 0;
+  }
+
+  .details {
+    display: flex;
+    gap: 24px;
+
+    .icon {
+      font-family: Inter, serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #002C67;
+    }
+  }
+}
+
+.car-action {
+  flex-shrink: 0;
+  flex-basis: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  border-left: 1px solid #f0f0f0;
+
+  .book-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+    height: 50px;
+    color: #EC6329;
+    border: 1.5px solid #EC6329;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 10px;
+    padding: 16px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: #EC6329;
+      color: white;
+    }
+  }
+}
+
+// ===================================
+// === RESPONSIVE STYLES ===
+// ===================================
+
+@media (max-width: 768px) {
+  .car-container {
+    flex-direction: column;
+  }
+
+  .car-image {
+    width: 100%;
+    flex-basis: auto;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .car-info {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+
+    .details {
+      justify-content: center;
+    }
+  }
+
+  .car-action {
+    width: 100%;
+    padding: 0 20px 20px 20px;
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+    justify-content: center;
+  }
+}

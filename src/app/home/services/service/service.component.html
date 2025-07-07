@@ -1,0 +1,26 @@
+<div class="slider-container" style="background-color: #fafafa">
+  <div class="cards-slider">
+    @for (deal of services; track deal.id; let i = $index) {
+      <div class="card" [class.focused]="i === 2">
+        <img [src]="'/assets/home/services/'+ deal.image" [alt]="deal.title" />
+
+        <div class="card-info">
+          <div class="card-header">
+            <p class="card-title">{{ deal.title }}</p>
+          </div>
+
+          @if (i === 2) {
+            <p class="deal-summary">{{ deal.summary }}</p>
+            <div class="deal-book">
+              <button class="book-btn">Book now</button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+  <div class="controls">
+    <button class="arrow-btn" style="background-color: white" (click)="prev()"><img  class="arrow-icon" src="/assets/icons/home/hot-deals/arrow-icon-left.svg" alt="left arrow"/></button>
+    <button class="arrow-btn" (click)="next()"><img  class="arrow-icon" src="/assets/icons/home/hot-deals/arrow-icon-right.svg" alt="right arrow"/></button>
+  </div>
+</div>

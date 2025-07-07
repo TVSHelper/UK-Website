@@ -1,0 +1,36 @@
+<div class="slider-container" style="background-color: #fafafa">
+  <div class="cards-slider">
+    @for (deal of visibleDeals(); track deal.id; let i = $index) {
+      <div class="card" [class.focused]="i === 1">
+        <img [src]="'/assets/home/hot-deals/'+ deal.image" [alt]="deal.title" />
+        <div class="card-info">
+          <div class="card-header">
+            <p class="card-title">{{ deal.title }}</p>
+            @if (i === 1) {
+              <p class="card-category">{{ deal.category }}</p>
+            }
+          </div>
+
+          @if (i === 1) {
+            <p class="deal-summary">{{ deal.summary }}</p>
+            <div class="deal-book">
+              <div class="price">
+                <p class="amount">
+                  {{ deal.price | currency:'USD':'symbol' }}
+                </p>
+                @if (deal.perTicket) {
+                  <span class="per-ticket">Per ticket</span>
+                }
+              </div>
+              <button class="book-btn">Book now</button>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+  <div class="controls">
+    <button class="arrow-btn" style="background-color: white" (click)="prev()"><img  class="arrow-icon" src="/assets/icons/home/hot-deals/arrow-icon-left.svg" alt="left arrow"/></button>
+    <button class="arrow-btn" (click)="next()"><img  class="arrow-icon" src="/assets/icons/home/hot-deals/arrow-icon-right.svg" alt="right arrow"/></button>
+  </div>
+</div>

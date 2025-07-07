@@ -1,0 +1,23 @@
+<div class="car-container">
+  <div class="car-image">
+    <img [src]="'/assets/home/search-bar/car-list/'+ car().image" alt="{{ car().title }}" />
+  </div>
+
+  <div class="car-info">
+    <h3>{{ car().title }}</h3>
+    <div class="details">
+      <span class="icon"><img src="/assets/icons/home/search-bar/person_icon.svg" alt="person-icon" /> {{ car().passengers }}</span>
+      <span class="icon"><img src="/assets/icons/home/search-bar/luggage_icon.svg" alt="luggage-icon" /> {{ car().luggage }}</span>
+    </div>
+  </div>
+
+  <div class="car-action">
+
+    <button class="book-btn">
+      <img ngSrc="assets/icons/home/car-list/thunder_icon.svg" alt="thunder-icon" height="24" width="24"/>
+      Book Now
+      <img ngSrc="assets/icons/home/car-list/right_arrow_icon.svg" alt="arrow-icon" height="24" width="24"/>
+    </button>
+
+  </div>
+</div>

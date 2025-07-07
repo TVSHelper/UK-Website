@@ -1,0 +1,178 @@
+:host {
+  display: flex;
+  width: 100%;
+  background-color: #002c67;
+  height: auto;
+  padding: 60px 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100%;
+  margin: 0 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  box-sizing: border-box;
+}
+
+.contact-us {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  .section-label {
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 100%;
+    color: white;
+    margin-bottom: 2px;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 43px;
+      height: 2px;
+      background-color: #ec6329;
+      margin: 6px 5px 9px 0;
+    }
+  }
+
+  .main-title {
+    font-family: 'Inter', serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1.1;
+    color: white;
+    margin: 0;
+  }
+}
+
+.contact-us-form {
+  display: flex;
+  gap: 40px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .company-info {
+    width: 610px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .support-message {
+      font-family: Inter, serif;
+      font-size: 24px;
+      line-height: 1.4;
+      color: #f8f8f8;
+    }
+
+    .contact-details {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      li {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+
+        .label {
+          font-family: Inter, serif;
+          font-size: 20px;
+          line-height: 1.6;
+          color: #f8f8f8;
+          min-width: 70px;
+          position: relative;
+          padding-left: 10px;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 3px;
+            background-color: #ec6329;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 1em;
+          }
+        }
+
+        a, span {
+          font-family: Inter, serif;
+          font-size: 20px;
+          line-height: 1.6;
+          color: #f8f8f8;
+          text-decoration: none;
+        }
+      }
+    }
+
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  .contact-form {
+    width: 610px; // Original fixed width for desktop
+  }
+}
+
+
+// ===================================
+// --- RESPONSIVE STYLES ---
+// ===================================
+
+/* For Tablets and smaller desktops */
+@media (max-width: 1200px) {
+  .main {
+    .contact-us-form {
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .company-info,
+    .contact-form {
+      width: 100%;
+      max-width: 610px;
+    }
+  }
+}
+
+/* For Mobile devices */
+@media (max-width: 768px) {
+  .main {
+    margin: 0 24px;
+  }
+  .contact-us .main-title {
+    font-size: 36px;
+  }
+  .company-info {
+    .support-message,
+    .contact-details .label,
+    .contact-details a,
+    .contact-details span {
+      font-size: 18px;
+    }
+
+    .contact-details li a,
+    .contact-details li span {
+      word-break: break-all;
+    }
+  }
+}
+
+/* For very narrow phones */
+@media (max-width: 480px) {
+  .main {
+    margin: 0 16px;
+  }
+}

@@ -1,0 +1,10 @@
+# Build settings
+[build]
+  command = "ng build --configuration production"
+  publish = "dist/travel-helper-try1/browser" #<-- IMPORTANT: Change this!
+
+# Redirect rule for single-page apps
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

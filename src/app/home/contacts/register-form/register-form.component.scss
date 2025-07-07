@@ -1,0 +1,105 @@
+.contact-form {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 4px;
+      color: #3a3a3a;
+      font-family: "Spline Sans", sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20.3px;
+      letter-spacing: 0;
+      span {
+        color: red;
+      }
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccdbde;
+      border-radius: 4px;
+      outline: none;
+
+      &:focus {
+        border-color: #003b89;
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+  }
+
+  .checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+    }
+
+    label {
+      font-weight: 500;
+    }
+  }
+
+  button {
+    background-color: #003b89;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: #002c67;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// ===================================
+// === RESPONSIVE STYLES START HERE ===
+// ===================================
+
+@media (max-width: 480px) {
+  .contact-form {
+    .form-row {
+      flex-direction: column;
+    }
+  }
+}

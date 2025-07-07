@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  background-color: #fafafa;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("assets/fonts/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Spline Sans;
+  src: url("assets/fonts/SplineSans-VariableFont_wght.ttf") format("truetype");
+  font-display: swap;
+}
+
+.search-bar-overlay {
+  position: absolute; /* Position it relative to .hero-image */
+  top: 521px; /* 521px from the top of the .hero-image container */
+  left: 50%; /* Start at 50% from the left */
+  transform: translateX(-50%); /* Move it back by half its own width to truly center */
+  z-index: 10; /* Ensure it's above the image, adjust as needed */
+  width: fit-content; /* Ensure the component wrapper is only as wide as its content */
+  max-width: 100%; /* Example: Prevents it from being too wide on small screens */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Add this to the top of src/styles.scss */
+* {
+  box-sizing: border-box;
+}

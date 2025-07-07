@@ -1,0 +1,49 @@
+<section class="reservation-container">
+  <div class="reservation-header">
+    <p class="reservation-label">Reservation</p>
+    <h2>Stay & Explore your favourite city!</h2>
+  </div>
+
+  <div class="reservation-tabs">
+    <button
+      (click)="selectTab('car_rental')"
+      [ngClass]="{'active': activeTab === 'car_rental'}">
+      <img ngSrc="/assets/icons/home/reservation/car.svg" alt="car" height="24" width="24"/> Car rental
+    </button>
+    <button
+      (click)="selectTab('tickets')"
+      [ngClass]="{'active': activeTab === 'tickets'}">
+      <img ngSrc="/assets/icons/home/reservation/ball.svg" alt="ticket" height="24" width="24"/> Tickets
+    </button>
+    <button
+      (click)="selectTab('stays')"
+      [ngClass]="{'active': activeTab === 'stays'}">
+      <img ngSrc="/assets/icons/home/reservation/bed.svg" alt="bed" height="24" width="24"/> Stays
+    </button>
+  </div>
+
+  <form class="search-bar" [formGroup]="reservationForm">
+    <div class="search-input-group">
+      <label for="destination">Where?</label>
+      <input id="destination" type="text" placeholder="Search destination" formControlName="destination">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="search-input-group">
+      <label for="checkin">Check in?</label>
+      <input id="checkin" type="text" placeholder="Add dates" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="checkInDate">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="search-input-group">
+      <label for="checkout">Check out?</label>
+      <input id="checkout" type="text" placeholder="Add dates" onfocus="(this.type='date')" onblur="(this.type='text')" formControlName="checkOutDate">
+    </div>
+
+    <button class="search-button" type="submit">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </form>
+</section>

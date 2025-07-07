@@ -1,0 +1,65 @@
+.services-section {
+  width: 100vw;
+  max-width: 1650px;
+  margin: 20px auto 0;
+  transition: margin-top 0.4s ease-in-out;
+
+
+  .services-title {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-bottom: 40px;
+
+    .section-label {
+      font-family: 'Inter', serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #002C67;
+      margin-bottom: 0;
+
+      &::after {
+        content: "";
+        display: block;
+        width: 43px;
+        height: 2px;
+        background-color: #EC6329;
+        margin: 6px 5px 9px 0;
+      }
+    }
+
+    .main-title {
+      font-family: 'Inter', serif;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #002C67;
+      margin: 0;
+      max-width: 721px;
+    }
+  }
+}
+
+:host-context(.car-list-visible) .services-section {
+  margin-top: 40px;
+}
+
+// ===============================================
+// RESPONSIVE MEDIA QUERIES
+// ===============================================
+
+@media (max-width: 768px) {
+  .services-section {
+    width: 95vw; // Use a little more width on mobile
+    padding-bottom: 40px;
+
+    .services-title {
+      .main-title {
+        font-size: 36px;
+      }
+    }
+  }
+}
