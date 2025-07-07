@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Travel-Helper-Try1": {
+    "UK-TVS": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/travel-helper-try1",
+            "outputPath": "dist/uk-tvs",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Travel-Helper-Try1:build:production"
+              "buildTarget": "UK-TVS:build:production"
             },
             "development": {
-              "buildTarget": "Travel-Helper-Try1:build:development"
+              "buildTarget": "UK-TVS:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -10,5 +10,5 @@ import {NavBarComponent} from './home/nav-bar/nav-bar.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Travel-Helper-Try1';
+  title = 'UK-TVS';
 }

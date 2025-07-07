@@ -16,7 +16,7 @@ module.exports = tseslint.config(
     processor: angular.processInlineTemplates,
     rules: {
       // ===============================================
-      // Default
+      // YOUR EXISTING ANGULAR RULES
       // ===============================================
       "@angular-eslint/directive-selector": [
         "error",
@@ -43,7 +43,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/semi": ["error", "always"],
       "@typescript-eslint/comma-spacing": ["error", { "before": false, "after": true }],
       "@typescript-eslint/object-curly-spacing": ["error", "always"],
-      "@typescript-eslint/array-bracket-spacing": ["error", "never"],
+      "array-bracket-spacing": ["error", "never"],
       "@typescript-eslint/space-before-function-paren": ["error", {
         "anonymous": "always",
         "named": "never",
@@ -55,7 +55,7 @@ module.exports = tseslint.config(
       "no-trailing-spaces": "error",
       "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
       "eol-last": ["error", "always"],
-      "comma-dangle": ["error", "never"],
+      "@typescript-eslint/comma-dangle": ["error", "never"],
 
       // ===============================================
       // CLASS MEMBER ORDERING & ACCESS MODIFIERS
@@ -139,7 +139,7 @@ module.exports = tseslint.config(
       // TYPESCRIPT STRICT RULES
       // ===============================================
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unsafe-any": "warn",
+      "@typescript-eslint/no-unsafe-any": "warn", // Warn instead of error for easier adoption
       "@typescript-eslint/no-unsafe-call": "warn",
       "@typescript-eslint/no-unsafe-member-access": "warn",
       "@typescript-eslint/no-unsafe-return": "warn",
@@ -294,7 +294,7 @@ module.exports = tseslint.config(
   {
     files: ["**/*.spec.ts"],
     rules: {
-      // No rules for the testing files yet
+      // No rules for test files for now
       // "@typescript-eslint/no-unused-vars": "off",
       // "@typescript-eslint/no-explicit-any": "off",
       // "@typescript-eslint/no-unsafe-any": "off",
