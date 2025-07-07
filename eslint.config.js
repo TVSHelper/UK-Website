@@ -136,17 +136,16 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-unused-expressions": "error",
 
       // ===============================================
-      // TYPESCRIPT STRICT RULES
+      // TYPESCRIPT STRICT RULES (Available without type-checking)
       // ===============================================
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unsafe-any": "warn", // Warn instead of error for easier adoption
-      "@typescript-eslint/no-unsafe-call": "warn",
-      "@typescript-eslint/no-unsafe-member-access": "warn",
-      "@typescript-eslint/no-unsafe-return": "warn",
-      "@typescript-eslint/no-unsafe-assignment": "warn",
       "@typescript-eslint/prefer-nullish-coalescing": "error",
       "@typescript-eslint/prefer-optional-chain": "error",
       "@typescript-eslint/no-non-null-assertion": "warn",
+      "@typescript-eslint/prefer-as-const": "error",
+      "@typescript-eslint/prefer-for-of": "error",
+      "@typescript-eslint/prefer-includes": "error",
+      "@typescript-eslint/prefer-string-starts-ends-with": "error",
 
       // ===============================================
       // ANGULAR SPECIFIC RULES
@@ -249,6 +248,31 @@ module.exports = tseslint.config(
       "complexity": ["warn", 10]
     },
   },
+  // ===============================================
+  // TYPE-CHECKED RULES (Optional - for stricter checking)
+  // Uncomment this section if you want type-aware linting
+  // ===============================================
+  // {
+  //   files: ["**/*.ts"],
+  //   extends: [
+  //     ...tseslint.configs.recommendedTypeChecked,
+  //   ],
+  //   languageOptions: {
+  //     parserOptions: {
+  //       project: true,
+  //       tsconfigRootDir: import.meta.dirname,
+  //     },
+  //   },
+  //   rules: {
+  //     // These require type-checking and may be too strict initially
+  //     "@typescript-eslint/no-unsafe-any": "warn",
+  //     "@typescript-eslint/no-unsafe-call": "warn",
+  //     "@typescript-eslint/no-unsafe-member-access": "warn",
+  //     "@typescript-eslint/no-unsafe-return": "warn",
+  //     "@typescript-eslint/no-unsafe-assignment": "warn",
+  //     "@typescript-eslint/no-unsafe-argument": "warn",
+  //   },
+  // },
   {
     files: ["**/*.html"],
     extends: [
@@ -294,16 +318,11 @@ module.exports = tseslint.config(
   {
     files: ["**/*.spec.ts"],
     rules: {
-      // No rules for test files for now
-      // "@typescript-eslint/no-unused-vars": "off",
-      // "@typescript-eslint/no-explicit-any": "off",
-      // "@typescript-eslint/no-unsafe-any": "off",
-      // "@typescript-eslint/no-unsafe-call": "off",
-      // "@typescript-eslint/no-unsafe-member-access": "off",
-      // "@typescript-eslint/no-unsafe-return": "off",
-      // "@typescript-eslint/no-unsafe-assignment": "off",
-      // "max-lines-per-function": "off",
-      // "@typescript-eslint/explicit-function-return-type": "off"
+      // Relax rules for test files
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "max-lines-per-function": "off",
+      "@typescript-eslint/explicit-function-return-type": "off"
     },
   },
   eslintConfigPrettier
