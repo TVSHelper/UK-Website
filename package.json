@@ -8,6 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
+    "lint:check": "eslint \"src/**/*.{ts,html}\"",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
     "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/stats.json"
