@@ -11,7 +11,7 @@
     "lint:check": "eslint \"src/**/*.{ts,html}\"",
     "test:ci": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss}\"",
-    "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/stats.json"
+    "analyze": "ng build --stats-json && npx webpack-bundle-analyzer dist/uk-tvs/stats.json"
   },
   "private": true,
   "dependencies": {

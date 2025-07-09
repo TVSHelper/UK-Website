@@ -1,53 +1,44 @@
 // ===============================================
 // VARIABLES
 // ===============================================
-$primary-orange: #ff6f42;
-$orange-hover: #e05e32;
-$light-gray-bg: #f7f7f7;
-$text-color-dark: #333;
-$text-color-light: #808080;
-$border-radius-main: 8px;
-$border-radius-inner: 6px;
-
-// Breakpoints
-$breakpoint-tablet: 1024px;
-$breakpoint-mobile: 768px;
-
+$primary: #ff6f42;
+$primary-hover: #e05e32;
+$bg-gray: #f7f7f7;
+$text-dark: #333;
+$text-light: #808080;
+$radius: 8px;
+$radius-sm: 6px;
 
 // ===============================================
-// HOST & COMPONENT WRAPPER
+// HOST & COMPONENT
 // ===============================================
 :host {
   display: block;
   position: relative;
   width: 90%;
   max-width: 1400px;
-  margin: -350px auto 230px auto;
+  margin: -350px auto 230px;
   z-index: 10;
-}
 
-:host.is-expanded {
-  margin-bottom: 173px;
+  &.is-expanded {
+    margin-bottom: 173px;
+  }
 }
 
 .search-component {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: $border-radius-main;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: $radius;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 100%;
   max-width: 1400px;
-  box-sizing: border-box;
-  position: relative;
   transition: padding-bottom 0.4s ease-in-out;
 }
 
-
 // ===============================================
-// MAIN & SECONDARY ROWS
+// ROWS
 // ===============================================
 .main-search-row,
 .secondary-options-row {
@@ -57,98 +48,98 @@ $breakpoint-mobile: 768px;
   flex-wrap: wrap;
 }
 
+// ===============================================
+// SHARED STYLES
+// ===============================================
+%focus-style {
+  &:focus {
+    outline: 2px solid $primary;
+    outline-offset: 2px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+%flex-item {
+  flex: 1 1 180px;
+}
 
 // ===============================================
-// INPUT BOX STYLES (Location, Date, Time)
+// INPUT BOX
 // ===============================================
 .search-input-box {
+  @extend %flex-item;
   display: flex;
   align-items: center;
-  background-color: $light-gray-bg;
-  border-radius: $border-radius-main;
+  background: $bg-gray;
+  border-radius: $radius;
   padding: 8px 12px;
   min-height: 55px;
-  box-sizing: border-box;
   cursor: pointer;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 180px;
+
+  &.date-time-box {
+    flex-basis: 140px;
+  }
 
   .icon-section {
+    @extend %focus-style;
     margin-right: 8px;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.2s ease;
+    transition: background 0.2s;
+
     img {
       width: 24px;
       height: 24px;
-      flex-shrink: 0;
-      cursor: pointer;
     }
 
     &:focus {
-      outline: 2px solid $primary-orange;
-      outline-offset: 2px;
-      background-color: rgba($primary-orange, 0.1);
-    }
-
-    &:focus:not(:focus-visible) {
-      outline: none;
+      background: rgba($primary, 0.1);
     }
   }
 
   .text-input-section {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 1;
+  }
 
-    .input-label {
-      font-family: 'Inter', serif;
-      font-size: 10px;
-      color: $text-color-light;
-      margin-bottom: 2px;
-      white-space: nowrap;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      font-weight: bold;
+  .input-label {
+    font: bold 10px/1 'Inter', sans-serif;
+    color: $text-light;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 
-      .required-asterisk {
-        color: $primary-orange;
-        margin-left: 1px;
-      }
+    .required-asterisk {
+      color: $primary;
+      margin-left: 1px;
     }
+  }
 
-    .main-text-input {
-      font-family: 'Inter', serif;
-      border: none;
-      outline: none;
-      background-color: transparent;
-      font-size: 16px;
-      color: $text-color-dark;
-      padding: 0;
-      width: 100%;
+  .main-text-input {
+    @extend %focus-style;
+    font: 16px 'Inter', sans-serif;
+    border: none;
+    background: transparent;
+    color: $text-dark;
+    width: 100%;
 
-      &.date-input::-webkit-calendar-picker-indicator,
-      &.time-input::-webkit-calendar-picker-indicator {
-        display: none;
-      }
+    &::-webkit-calendar-picker-indicator {
+      display: none;
     }
   }
 }
 
-.date-time-box {
-  flex-basis: 140px;
-}
-
-
 // ===============================================
-// OTHER ELEMENTS (Swap, Button, Options)
+// BUTTONS & CONTROLS
 // ===============================================
 .swap-icon-wrapper {
-  background-color: #e0e0e0;
+  background: #e0e0e0;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -156,18 +147,13 @@ $breakpoint-mobile: 768px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s, transform 0.2s;
   flex-shrink: 0;
   border: none;
-  padding: 0;
 
   &:hover {
-    background-color: #d0d0d0;
+    background: #d0d0d0;
     transform: rotate(180deg);
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 
   img {
@@ -177,26 +163,24 @@ $breakpoint-mobile: 768px;
 }
 
 .find-ride-btn {
-  background-color: $primary-orange;
+  @extend %focus-style;
+  @extend %flex-item;
+  background: $primary;
   color: white;
   border: none;
-  border-radius: $border-radius-main;
+  border-radius: $radius;
   padding: 15px 25px;
-  font-size: 16px;
-  font-weight: bold;
+  font: bold 16px sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s;
   height: 55px;
-  box-sizing: border-box;
-  flex-grow: 1;
-  flex-basis: 180px;
 
   &:hover {
-    background-color: $orange-hover;
+    background: $primary-hover;
   }
 
   svg {
@@ -208,8 +192,8 @@ $breakpoint-mobile: 768px;
 
 .radio-button-group {
   display: flex;
-  background-color: $light-gray-bg;
-  border-radius: $border-radius-main;
+  background: $bg-gray;
+  border-radius: $radius;
   padding: 5px;
 
   .radio-segment {
@@ -217,40 +201,48 @@ $breakpoint-mobile: 768px;
     cursor: pointer;
     user-select: none;
 
-    input[type="radio"] {
+    input {
       position: absolute;
       opacity: 0;
+
+      &:checked + span {
+        background: $primary;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      &:focus + span {
+        outline: 2px solid $primary;
+        outline-offset: 2px;
+      }
+
+      &:focus:not(:focus-visible) + span {
+        outline: none;
+      }
     }
 
     span {
       display: block;
-      border-radius: $border-radius-inner;
+      border-radius: $radius-sm;
       padding: 8px 15px;
       font-size: 14px;
-      color: $text-color-dark;
-      transition: all 0.3s ease;
-    }
-
-    input[type="radio"]:checked + span {
-      background-color: $primary-orange;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      color: $text-dark;
+      transition: all 0.3s;
     }
   }
 }
 
 .custom-dropdown-container {
+  @extend %flex-item;
+  flex-basis: 120px;
   display: flex;
   align-items: center;
-  background-color: $light-gray-bg;
-  border-radius: $border-radius-main;
+  background: $bg-gray;
+  border-radius: $radius;
   padding: 8px 12px;
   height: 40px;
-  box-sizing: border-box;
   position: relative;
   cursor: pointer;
-  flex-grow: 1;
-  flex-basis: 120px;
 
   .dropdown-icon img {
     width: 18px;
@@ -259,12 +251,12 @@ $breakpoint-mobile: 768px;
   }
 
   .custom-select {
+    @extend %focus-style;
     appearance: none;
     border: none;
-    outline: none;
-    background-color: transparent;
+    background: transparent;
     font-size: 15px;
-    color: $text-color-dark;
+    color: $text-dark;
     width: 100%;
     cursor: pointer;
   }
@@ -273,40 +265,28 @@ $breakpoint-mobile: 768px;
     position: absolute;
     right: 12px;
     pointer-events: none;
+
     svg {
       width: 14px;
       height: 14px;
       fill: #888;
     }
   }
-
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
 }
 
 .less-options-link {
-  font-family: 'Inter', serif;
-  font-weight: 700;
+  @extend %focus-style;
+  font: 700 15px 'Inter', sans-serif;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 5px;
-  font-size: 15px;
-  color: $text-color-dark;
+  color: $text-dark;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: color 0.2s;
   user-select: none;
   padding: 5px 10px;
-  border-radius: $border-radius-inner;
+  border-radius: $radius-sm;
   margin-left: auto;
   background: none;
   border: none;
@@ -314,70 +294,41 @@ $breakpoint-mobile: 768px;
   svg {
     width: 18px;
     height: 18px;
-    fill: $text-color-dark;
-    transition: fill 0.2s ease;
+    fill: $text-dark;
+    transition: fill 0.2s;
   }
 
-  &:hover {
-    color: $primary-orange;
-    svg {
-      fill: $primary-orange;
-    }
-  }
+  &:hover,
   &:focus {
-    outline: 2px solid $primary-orange;
-    outline-offset: 2px;
-    color: $primary-orange;
-
+    color: $primary;
     svg {
-      fill: $primary-orange;
+      fill: $primary;
     }
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
   }
 }
 
-.find-ride-btn,
-.custom-select,
-.main-text-input {
-  &:focus {
-    outline: 2px solid $primary-orange;
-    outline-offset: 2px;
-  }
-
-  &:focus:not(:focus-visible) {
-    outline: none;
-  }
-}
-
-// Improve radio button focus styles
-.radio-button-group .radio-segment {
-  input[type="radio"]:focus + span {
-    outline: 2px solid $primary-orange;
-    outline-offset: 2px;
-  }
-
-  input[type="radio"]:focus:not(:focus-visible) + span {
-    outline: none;
-  }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
 
 // ===============================================
-// RESPONSIVE MEDIA QUERIES
+// RESPONSIVE
 // ===============================================
-
-// --- Tablet View ---
-@media (max-width: $breakpoint-tablet) {
+@media (max-width: 1024px) {
   .search-component {
     padding: 15px;
   }
 
-  .main-search-row {
-    .search-input-box {
-      flex-basis: calc(50% - 20px);
-    }
+  .main-search-row .search-input-box {
+    flex-basis: calc(50% - 20px);
   }
 
   .secondary-options-row {
@@ -389,16 +340,19 @@ $breakpoint-mobile: 768px;
   }
 }
 
-// --- Mobile View ---
-@media (max-width: $breakpoint-mobile) {
+@media (max-width: 768px) {
+  :host {
+    margin: -80px auto 40px;
+  }
+
   .main-search-row,
   .secondary-options-row {
     flex-direction: column;
     align-items: stretch;
-  }
 
-  .main-search-row .search-input-box {
-    flex-basis: 100%;
+    .search-input-box {
+      flex-basis: 100%;
+    }
   }
 
   .swap-icon-wrapper {
@@ -413,11 +367,5 @@ $breakpoint-mobile: 768px;
   .radio-button-group {
     width: 100%;
     justify-content: space-evenly;
-  }
-}
-
-@media (max-width: 768px) {
-  :host {
-    margin: -80px auto 40px auto;
   }
 }

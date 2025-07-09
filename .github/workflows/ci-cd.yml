@@ -150,7 +150,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bundle-analysis
-          path: dist/stats.json
+          path: dist/uk-tvs/stats.json
 
   # DEPLOYMENT STAGES - COMMENTED OUT FOR DEVELOPMENT
   # Uncomment and configure these when you're ready to deploy
