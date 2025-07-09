@@ -27,7 +27,7 @@ jobs:
         run: echo "cache-key=${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}" >> $GITHUB_OUTPUT
 
       - name: Cache node modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.npm
           key: ${{ steps.cache-keys.outputs.cache-key }}
@@ -87,12 +87,13 @@ jobs:
       # - name: Run e2e tests
       #   run: npm run e2e:ci
 
-#      - name: Upload coverage to Codecov
-#        uses: codecov/codecov-action@v3
-#        with:
-#          file: ./coverage/lcov.info
-#          flags: unittests
-#          name: codecov-umbrella
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     file: ./coverage/lcov.info
+      #     flags: unittests
+      #     name: codecov-umbrella
+      #     token: ${{ secrets.CODECOV_TOKEN }}
 
   # Stage 4: Build and Security
   build:
@@ -118,7 +119,7 @@ jobs:
         run: npm audit --audit-level=high
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: dist/
@@ -146,7 +147,7 @@ jobs:
         run: npm run analyze
 
       - name: Upload bundle analysis
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bundle-analysis
           path: dist/stats.json
@@ -162,7 +163,7 @@ jobs:
   #   environment: staging
   #   steps:
   #     - name: Download build artifacts
-  #       uses: actions/download-artifact@v3
+  #       uses: actions/download-artifact@v4
   #       with:
   #         name: build-artifacts
   #         path: dist/
@@ -185,7 +186,7 @@ jobs:
   #   environment: production
   #   steps:
   #     - name: Download build artifacts
-  #       uses: actions/download-artifact@v3
+  #       uses: actions/download-artifact@v4
   #       with:
   #         name: build-artifacts
   #         path: dist/
