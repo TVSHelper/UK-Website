@@ -16,7 +16,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 export class ReservationFormComponent {
   activeTab: 'car_rental' | 'tickets' | 'stays' = 'car_rental';
   reservationForm: FormGroup;
-  private fb: FormBuilder = inject(FormBuilder);
+  private readonly fb: FormBuilder = inject(FormBuilder);
 
   constructor() {
     this.reservationForm = this.fb.group({

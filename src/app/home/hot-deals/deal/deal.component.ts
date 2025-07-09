@@ -14,13 +14,8 @@ import { Subscription, interval } from 'rxjs';
   styleUrls: ['./deal.component.scss']
 })
 export class DealComponent implements OnInit, OnDestroy {
-  private hotDealsService = inject(HotDealsService);
   deals = signal<DealModel[]>([]);
   currentIndex = signal(1);
-
-  private timerSubscription: Subscription | undefined;
-  private readonly slideInterval = 3000;
-
   visibleDeals = computed(() => {
     const allDeals = this.deals();
     if (allDeals.length < 3) {
@@ -37,22 +32,13 @@ export class DealComponent implements OnInit, OnDestroy {
     ];
   });
 
+  private readonly hotDealsService = inject(HotDealsService);
+  private timerSubscription: Subscription | undefined;
+  private readonly slideInterval = 4000;
+
   ngOnInit() {
     this.deals.set(this.hotDealsService.deals);
     this.startTimer(); // Start the timer when the component loads
-  }
-
-  private startTimer(): void {
-    this.clearTimer();
-    this.timerSubscription = interval(this.slideInterval).subscribe(() => {
-      this.next();
-    });
-  }
-
-  private clearTimer(): void {
-    if (this.timerSubscription) {
-      this.timerSubscription.unsubscribe();
-    }
   }
 
   @HostListener('mouseenter')
@@ -81,7 +67,20 @@ export class DealComponent implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.clearTimer();
+  }
+
+  private startTimer(): void {
+    this.clearTimer();
+    this.timerSubscription = interval(this.slideInterval).subscribe(() => {
+      this.next();
+    });
+  }
+
+  private clearTimer(): void {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 }

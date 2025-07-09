@@ -13,13 +13,13 @@ import {Router, RouterLink} from '@angular/router';
 })
 export class NavBarComponent {
   isMenuOpen = false;
-  private router: Router = inject(Router);
+  private readonly router: Router = inject(Router);
 
   toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  scrollTo(sectionId: string) {
+  scrollTo(sectionId: string): void {
     const element: HTMLElement | null = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });

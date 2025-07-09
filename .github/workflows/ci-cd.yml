@@ -84,16 +84,15 @@ jobs:
       - name: Run unit tests
         run: npm run test:ci
 
-      # Comment out e2e tests if not set up yet
       # - name: Run e2e tests
       #   run: npm run e2e:ci
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          file: ./coverage/lcov.info
-          flags: unittests
-          name: codecov-umbrella
+#      - name: Upload coverage to Codecov
+#        uses: codecov/codecov-action@v3
+#        with:
+#          file: ./coverage/lcov.info
+#          flags: unittests
+#          name: codecov-umbrella
 
   # Stage 4: Build and Security
   build:

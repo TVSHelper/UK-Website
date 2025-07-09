@@ -20,7 +20,7 @@ export class TransportationComponent {
   carResults = signal<CarModel[]>([]);
   searchTriggered = signal(false);
 
-  handleSearch(searchCriteria: CarSearchCriteriaModel) {
+  handleSearch(searchCriteria: CarSearchCriteriaModel): void {
     console.log('Search performed with criteria:', searchCriteria);
 
     const mockResults: CarModel[] = [

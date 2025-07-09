@@ -1,8 +1,8 @@
-<app-background-image staticImage="'/assets/home/background/london-home.png'"></app-background-image>
-<app-search-bar (searchPerformed)="handleSearch($event)"></app-search-bar>
+<app-background-image staticImage="'/assets/home/background/london-home.png'"/>
+<app-search-bar (searchPerformed)="handleSearch($event)"/>
 @defer (when searchTriggered()) {
 
-  <app-car-list [cars]="carResults()"></app-car-list>
+  <app-car-list [cars]="carResults()"/>
 
 }
-<app-hot-deals></app-hot-deals>
+<app-hot-deals/>

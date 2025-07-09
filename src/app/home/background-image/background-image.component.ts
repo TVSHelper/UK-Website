@@ -1,6 +1,6 @@
-import {Component, computed, effect, signal, OnDestroy, Injector, input, inject} from '@angular/core';
+import { Component, computed, signal, OnDestroy, OnInit, input } from '@angular/core';
 
-interface Slide {
+interface SlideModel {
   url: string;
   title: string;
   buttonText: string;
@@ -13,11 +13,12 @@ interface Slide {
   templateUrl: './background-image.component.html',
   styleUrl: './background-image.component.scss'
 })
-export class BackgroundImageComponent implements OnDestroy {
+export class BackgroundImageComponent implements OnInit, OnDestroy {
   staticImage = input<string | null>(null);
-  private injector: Injector = inject(Injector);
+  currentIndex = signal(0);
+  currentSlide = computed(() => this.slides[this.currentIndex()]);
 
-  slides: Slide[] = [
+  slides: SlideModel[] = [
     {
       url: '/assets/home/background/1.jpg',
       title: 'VIP experiences, first-class service, and unforgettable journeys await!',
@@ -45,24 +46,21 @@ export class BackgroundImageComponent implements OnDestroy {
     },
   ];
 
-  currentIndex = signal(0);
+  private intervalId?: number;
 
-  currentSlide = computed(() => this.slides[this.currentIndex()]);
-
-
-  private timeoutId?: number;
-
-  constructor() {
-    this.initializeTimerEffect();
+  ngOnInit(): void {
+    this.startSlideshow();
   }
 
-  private initializeTimerEffect(): void {
-    effect(() => {
-      window.clearTimeout(this.timeoutId);
+  private startSlideshow(): void {
+    this.intervalId = window.setInterval(() => this.goToNext(), 4000);
+  }
 
-      this.timeoutId = window.setTimeout(() => this.goToNext(), 4000);
-
-    }, { injector: this.injector });
+  private stopSlideshow(): void {
+    if (this.intervalId) {
+      window.clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
   }
 
   goToNext(): void {
@@ -73,9 +71,12 @@ export class BackgroundImageComponent implements OnDestroy {
 
   goToSlide(slideIndex: number): void {
     this.currentIndex.set(slideIndex);
+    // Restart the timer when manually changing slides
+    this.stopSlideshow();
+    this.startSlideshow();
   }
 
   ngOnDestroy(): void {
-    window.clearTimeout(this.timeoutId);
+    this.stopSlideshow();
   }
 }

@@ -76,11 +76,27 @@ $breakpoint-mobile: 768px;
 
   .icon-section {
     margin-right: 8px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
     img {
       width: 24px;
       height: 24px;
       flex-shrink: 0;
       cursor: pointer;
+    }
+
+    &:focus {
+      outline: 2px solid $primary-orange;
+      outline-offset: 2px;
+      background-color: rgba($primary-orange, 0.1);
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
     }
   }
 
@@ -142,10 +158,16 @@ $breakpoint-mobile: 768px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
   flex-shrink: 0;
+  border: none;
+  padding: 0;
 
   &:hover {
     background-color: #d0d0d0;
     transform: rotate(180deg);
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
   }
 
   img {
@@ -257,6 +279,18 @@ $breakpoint-mobile: 768px;
       fill: #888;
     }
   }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 }
 
 .less-options-link {
@@ -274,6 +308,8 @@ $breakpoint-mobile: 768px;
   padding: 5px 10px;
   border-radius: $border-radius-inner;
   margin-left: auto;
+  background: none;
+  border: none;
 
   svg {
     width: 18px;
@@ -288,8 +324,45 @@ $breakpoint-mobile: 768px;
       fill: $primary-orange;
     }
   }
+  &:focus {
+    outline: 2px solid $primary-orange;
+    outline-offset: 2px;
+    color: $primary-orange;
+
+    svg {
+      fill: $primary-orange;
+    }
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
+.find-ride-btn,
+.custom-select,
+.main-text-input {
+  &:focus {
+    outline: 2px solid $primary-orange;
+    outline-offset: 2px;
+  }
+
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Improve radio button focus styles
+.radio-button-group .radio-segment {
+  input[type="radio"]:focus + span {
+    outline: 2px solid $primary-orange;
+    outline-offset: 2px;
+  }
+
+  input[type="radio"]:focus:not(:focus-visible) + span {
+    outline: none;
+  }
+}
 
 // ===============================================
 // RESPONSIVE MEDIA QUERIES

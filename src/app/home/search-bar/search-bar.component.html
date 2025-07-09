@@ -5,37 +5,61 @@
         <img ngSrc="/assets/icons/home/search-bar/location_icon.svg" alt="input-location" height="24" width="24"/>
       </div>
       <div class="text-input-section">
-        <label class="input-label">Pick up <span class="required-asterisk">*</span></label>
-        <input type="text" placeholder="Enter pickup location" class="main-text-input" formControlName="pickupLocation">
+        <label for="pickupLocation" class="input-label">Pick up <span class="required-asterisk">*</span></label>
+        <input
+          id="pickupLocation"
+          type="text"
+          placeholder="Enter pickup location"
+          class="main-text-input"
+          formControlName="pickupLocation">
       </div>
     </div>
 
-    <div class="swap-icon-wrapper" (click)="swapLocations()">
+    <button
+      type="button"
+      class="swap-icon-wrapper"
+      (click)="swapLocations()"
+      (keydown.enter)="swapLocations()"
+      (keydown.space)="swapLocations()"
+      aria-label="Swap pickup and drop-off locations"
+      tabindex="0">
       <img ngSrc="/assets/icons/home/search-bar/swap_horizontal_icon.svg" alt="swap-calendar" height="24" width="24"/>
-    </div>
+    </button>
 
     <div class="search-input-box">
       <div class="icon-section">
         <img ngSrc="/assets/icons/home/search-bar/location_icon.svg" alt="dropoff-location" height="24" width="24"/>
       </div>
       <div class="text-input-section">
-        <label class="input-label">Drop off <span class="required-asterisk">*</span></label>
-        <input type="text" placeholder="Enter drop off location" class="main-text-input" formControlName="dropOffLocation">
+        <label for="dropOffLocation" class="input-label">Drop off <span class="required-asterisk">*</span></label>
+        <input
+          id="dropOffLocation"
+          type="text"
+          placeholder="Enter drop off location"
+          class="main-text-input"
+          formControlName="dropOffLocation">
       </div>
     </div>
 
     <div class="search-input-box date-time-box">
-      <div class="icon-section">
+      <button
+        type="button"
+        class="icon-section"
+        (click)="pickupDateInput.showPicker()"
+        (keydown.enter)="pickupDateInput.showPicker()"
+        (keydown.space)="pickupDateInput.showPicker()"
+        aria-label="Open date picker"
+        tabindex="0">
         <img
           ngSrc="/assets/icons/home/search-bar/calendar_icon.svg"
           alt="Open Calendar"
-          (click)="pickupDateInput.showPicker()"
           height="24" width="24"/>
-      </div>
+      </button>
       <div class="text-input-section">
-        <label class="input-label">Date <span class="required-asterisk">*</span></label>
+        <label for="pickupDate" class="input-label">Date <span class="required-asterisk">*</span></label>
         <input
           #pickupDateInput
+          id="pickupDate"
           type="date"
           placeholder="DD/MM/YYYY"
           class="main-text-input date-input"
@@ -45,17 +69,24 @@
     </div>
 
     <div class="search-input-box date-time-box">
-      <div class="icon-section">
+      <button
+        type="button"
+        class="icon-section"
+        (click)="pickupTimeInput.showPicker()"
+        (keydown.enter)="pickupTimeInput.showPicker()"
+        (keydown.space)="pickupTimeInput.showPicker()"
+        aria-label="Open time picker"
+        tabindex="0">
         <img
           ngSrc="/assets/icons/home/search-bar/clock_icon.svg"
           alt="Open Clock"
-          (click)="pickupTimeInput.showPicker()"
           height="24" width="24"/>
-      </div>
+      </button>
       <div class="text-input-section">
-        <label class="input-label">Time <span class="required-asterisk">*</span></label>
+        <label for="pickupTime" class="input-label">Time <span class="required-asterisk">*</span></label>
         <input
           #pickupTimeInput
+          id="pickupTime"
           type="time"
           placeholder="HH:MM"
           class="main-text-input time-input"
@@ -73,47 +104,73 @@
     <div class="secondary-options-row">
       <div class="radio-button-group">
         <label class="radio-segment">
-          <input type="radio" value="oneWay" formControlName="tripType">
+          <input
+            id="oneWay"
+            type="radio"
+            value="oneWay"
+            formControlName="tripType">
           <span>One way</span>
         </label>
         <label class="radio-segment">
-          <input type="radio" value="roundTrip" formControlName="tripType">
+          <input
+            id="roundTrip"
+            type="radio"
+            value="roundTrip"
+            formControlName="tripType">
           <span>Round trip</span>
         </label>
       </div>
 
       <div class="custom-dropdown-container">
-          <span class="dropdown-icon">
-            <img ngSrc="/assets/icons/home/search-bar/person_icon.svg" alt="person" height="24" width="24"/>
-          </span>
-        <select class="custom-select" formControlName="passengers">
+        <span class="dropdown-icon">
+          <img ngSrc="/assets/icons/home/search-bar/person_icon.svg" alt="person" height="24" width="24"/>
+        </span>
+        <label for="passengers" class="sr-only">Number of passengers</label>
+        <select
+          id="passengers"
+          class="custom-select"
+          formControlName="passengers"
+          aria-label="Select number of passengers">
           @for (num of passengersOptions; track num) {
             <option [ngValue]="num">{{ num }}</option>
           }
         </select>
         <span class="dropdown-arrow">
-            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-          </span>
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </span>
       </div>
 
       <div class="custom-dropdown-container">
-          <span class="dropdown-icon">
-            <img ngSrc="/assets/icons/home/search-bar/luggage_icon.svg" alt="luggage" height="24" width="24"/>
-          </span>
-        <select class="custom-select" formControlName="luggage">
+        <span class="dropdown-icon">
+          <img ngSrc="/assets/icons/home/search-bar/luggage_icon.svg" alt="luggage" height="24" width="24"/>
+        </span>
+        <label for="luggage" class="sr-only">Number of luggage items</label>
+        <select
+          id="luggage"
+          class="custom-select"
+          formControlName="luggage"
+          aria-label="Select number of luggage items">
           @for (num of luggageOptions; track num) {
             <option [ngValue]="num">{{ num }}</option>
           }
         </select>
         <span class="dropdown-arrow">
-            <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-          </span>
+          <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+        </span>
       </div>
     </div>
   }
 
-  <div class="less-options-link" (click)="toggleLessOptions()">
+  <button
+    type="button"
+    class="less-options-link"
+    (click)="toggleLessOptions()"
+    (keydown.enter)="toggleLessOptions()"
+    (keydown.space)="toggleLessOptions()"
+    [attr.aria-expanded]="showLessOptions"
+    aria-label="Toggle additional search options"
+    tabindex="0">
     <svg viewBox="0 0 24 24"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
     <span>{{ showLessOptions ? 'Less options' : 'More options' }}</span>
-  </div>
+  </button>
 </form>

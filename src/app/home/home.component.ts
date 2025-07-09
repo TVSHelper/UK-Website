@@ -20,9 +20,11 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   private fragmentSubscription: Subscription | undefined;
-  private carsService: CarsService = inject(CarsService);
-  private route: ActivatedRoute = inject(ActivatedRoute);
+  private readonly carsService: CarsService = inject(CarsService);
+  private readonly route: ActivatedRoute = inject(ActivatedRoute);
+  private searchSubscription!: Subscription;
 
+  isCarListVisible = false;
   ngAfterViewInit(): void {
     this.fragmentSubscription = this.route.fragment.subscribe(fragment => {
       if (fragment) {
@@ -36,10 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     }
 
-  isCarListVisible = false;
-  private searchSubscription!: Subscription;
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.searchSubscription = this.carsService.searchTriggered$.subscribe(wasTriggered => {
       if (wasTriggered) {
         this.isCarListVisible = true;

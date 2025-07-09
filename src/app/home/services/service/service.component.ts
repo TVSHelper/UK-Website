@@ -13,24 +13,12 @@ export class ServiceComponent implements OnInit, OnDestroy {
 
   private timerSubscription: Subscription | undefined;
   private readonly slideInterval = 3000;
-  private servicesService: ServicesService = inject(ServicesService);
+  private readonly servicesService: ServicesService = inject(ServicesService);
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.services = this.servicesService.services;
     this.startTimer();
-  }
-
-  private startTimer(): void {
-    this.timerSubscription = interval(this.slideInterval).subscribe(() => {
-      this.next();
-    });
-  }
-
-  private clearTimer(): void {
-    if (this.timerSubscription) {
-      this.timerSubscription.unsubscribe();
-    }
   }
 
   @HostListener('mouseenter')
@@ -57,7 +45,19 @@ export class ServiceComponent implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.clearTimer();
+  }
+
+  private startTimer(): void {
+    this.timerSubscription = interval(this.slideInterval).subscribe(() => {
+      this.next();
+    });
+  }
+
+  private clearTimer(): void {
+    if (this.timerSubscription) {
+      this.timerSubscription.unsubscribe();
+    }
   }
 }

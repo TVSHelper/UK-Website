@@ -51,7 +51,10 @@ export class SearchBarComponent {
     this.searchPerformed.emit(this.searchForm.value);
   }
 
-  swapLocations(): void {
+  swapLocations(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
     const currentPickup = this.searchForm.get('pickupLocation')?.value;
     const currentDropOff = this.searchForm.get('dropOffLocation')?.value;
 
@@ -59,12 +62,15 @@ export class SearchBarComponent {
     this.searchForm.get('dropOffLocation')?.setValue(currentPickup);
   }
 
-  toggleLessOptions(): void {
+  toggleLessOptions(event?: Event): void {
+    if (event) {
+      event.preventDefault();
+    }
     this.showLessOptions = !this.showLessOptions;
   }
 
   @HostBinding('class.is-expanded')
-  get isExpanded() {
+  get isExpanded(): boolean {
     return this.showLessOptions;
   }
 }

@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   styleUrl: './register-form.component.scss'
 })
 export class RegisterFormComponent {
-  private fb: FormBuilder = inject(FormBuilder);
+  private readonly fb: FormBuilder = inject(FormBuilder);
 
   contactForm: FormGroup;
 
